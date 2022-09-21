@@ -24,8 +24,8 @@ function playerSelect() {
 function playRound(computerSelection, playerSelection) {
     computerSelection = getComputerChoice();
     playerSelection = playerSelection.toUpperCase();
-    let computerWin = 1;
-    let playerWin = 2;
+    let computerWin = "computerwin";
+    let playerWin = "playerwin";
 
     console.log(`Computer selection: ${computerSelection}`);
     console.log(`Player selection: ${playerSelection}`);
@@ -76,24 +76,72 @@ function game() {
     }
 } 
 
+const container = document.querySelector("#container");
+
+const div = document.createElement("div");
+const p = document.createElement("p");
+const pScorePC = document.createElement("p");
+const pScorePlayer = document.createElement("p");
+
+let playerCounter = 0;
+let computerCounter = 0;
+
 const btnRock = document.querySelector(".rock");
 
-
 btnRock.addEventListener("click", (e) => {
-    playRound(e, "rock");
+    const winner = playRound(e, "rock");
+    if(winner === "computerwin") {
+        p.textContent = "You lose! PAPER beats ROCK!";
+        computerCounter++;
+        pScorePC.textContent = `Computer score: ${computerCounter}`;
+        pScorePlayer.textContent = `Player score: ${playerCounter}`;
+    } else if(winner === "playerwin") {
+        p.textContent = "You win! ROCK beats SCISSORS!";
+        playerCounter++;
+        pScorePC.textContent = `Computer score: ${computerCounter}`;
+        pScorePlayer.textContent = `Player score: ${playerCounter}`;
+    } else p.textContent = winner;
 });
 
 
 const btnPaper = document.querySelector(".paper");
 
 btnPaper.addEventListener("click", (e) => {
-    playRound(e, "paper");
+    const winner = playRound(e, "paper");
+    if(winner === "computerwin") {
+        p.textContent = "You lose! SCISSORS beats PAPER!"
+        computerCounter++;
+        pScorePC.textContent = `Computer score: ${computerCounter}`;
+        pScorePlayer.textContent = `Player score: ${playerCounter}`;
+    } else if(winner === "playerwin") {
+        p.textContent = "You win! PAPER beats ROCK!";
+        playerCounter++;
+        pScorePC.textContent = `Computer score: ${computerCounter}`;
+        pScorePlayer.textContent = `Player score: ${playerCounter}`;
+    } else p.textContent = winner;
 });
+
 
 const btnScissors = document.querySelector(".scissors");
 
 btnScissors.addEventListener("click", (e) => {
-    playRound(e, "scissors");
+    const winner = playRound(e, "scissors");
+    if(winner === "computerwin") {
+        p.textContent = "You lose! ROCK beats SCISSORS!";
+        computerCounter++;
+        pScorePC.textContent = `Computer score: ${computerCounter}`;
+        pScorePlayer.textContent = `Player score: ${playerCounter}`;
+    } else if(winner === "playerwin") {
+        p.textContent = "You win! SCISSORS beats PAPER!";
+        playerCounter++;
+        pScorePC.textContent = `Computer score: ${computerCounter}`;
+        pScorePlayer.textContent = `Player score: ${playerCounter}`;
+    } else p.textContent = winner;
 });
 
+
+div.appendChild(p);
+div.appendChild(pScorePC);
+div.appendChild(pScorePlayer);
+container.appendChild(div);
 //game();
