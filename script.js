@@ -82,6 +82,7 @@ const div = document.createElement("div");
 const p = document.createElement("p");
 const pScorePC = document.createElement("p");
 const pScorePlayer = document.createElement("p");
+const finalWinner = document.createElement("p");
 
 let playerCounter = 0;
 let computerCounter = 0;
@@ -101,6 +102,16 @@ btnRock.addEventListener("click", (e) => {
         pScorePC.textContent = `Computer score: ${computerCounter}`;
         pScorePlayer.textContent = `Player score: ${playerCounter}`;
     } else p.textContent = winner;
+
+    if(playerCounter === 5) {
+        finalWinner.textContent = "You got 5 points! You're the winner!";
+        playerCounter = 0;
+        computerCounter = 0;
+    } else if(computerCounter === 5) {
+        finalWinner.textContent = "You lose! The computer got 5 points!"
+        playerCounter = 0;
+        computerCounter = 0;
+    }
 });
 
 
@@ -119,6 +130,16 @@ btnPaper.addEventListener("click", (e) => {
         pScorePC.textContent = `Computer score: ${computerCounter}`;
         pScorePlayer.textContent = `Player score: ${playerCounter}`;
     } else p.textContent = winner;
+
+    if(playerCounter === 5) {
+        finalWinner.textContent = "You got 5 points! You're the winner!";
+        playerCounter = 0;
+        computerCounter = 0;
+    } else if(computerCounter === 5) {
+        finalWinner.textContent = "You lose! The computer got 5 points!"
+        playerCounter = 0;
+        computerCounter = 0;
+    }
 });
 
 
@@ -137,11 +158,22 @@ btnScissors.addEventListener("click", (e) => {
         pScorePC.textContent = `Computer score: ${computerCounter}`;
         pScorePlayer.textContent = `Player score: ${playerCounter}`;
     } else p.textContent = winner;
+
+    if(playerCounter === 5) {
+        finalWinner.textContent = "You got 5 points! You're the winner!";
+        playerCounter = 0;
+        computerCounter = 0;
+    } else if(computerCounter === 5) {
+        finalWinner.textContent = "You lose! The computer got 5 points!"
+        playerCounter = 0;
+        computerCounter = 0;
+    }
 });
 
 
 div.appendChild(p);
 div.appendChild(pScorePC);
 div.appendChild(pScorePlayer);
+div.appendChild(finalWinner);
 container.appendChild(div);
 //game();
