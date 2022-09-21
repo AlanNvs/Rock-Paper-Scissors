@@ -1,3 +1,4 @@
+"use strict"
 function randomNumber () {
     const max = 3;
     const min = 1;
@@ -22,7 +23,7 @@ function playerSelect() {
 } 
 function playRound(computerSelection, playerSelection) {
     computerSelection = getComputerChoice();
-    playerSelection = playerSelect();
+    playerSelection = playerSelection.toUpperCase();
     let computerWin = 1;
     let playerWin = 2;
 
@@ -74,4 +75,25 @@ function game() {
         console.log(`It's a Draw! You and the computer have won ${playerScore} times!`);
     }
 } 
-game();
+
+const btnRock = document.querySelector(".rock");
+
+
+btnRock.addEventListener("click", (e) => {
+    playRound(e, "rock");
+});
+
+
+const btnPaper = document.querySelector(".paper");
+
+btnPaper.addEventListener("click", (e) => {
+    playRound(e, "paper");
+});
+
+const btnScissors = document.querySelector(".scissors");
+
+btnScissors.addEventListener("click", (e) => {
+    playRound(e, "scissors");
+});
+
+//game();
